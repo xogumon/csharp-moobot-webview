@@ -35,12 +35,15 @@ namespace Moo.bot
             closeButton = new Button();
             minimizeButton = new Button();
             titleBar = new Panel();
+            appTitle = new Label();
             ((System.ComponentModel.ISupportInitialize)webView2).BeginInit();
+            titleBar.SuspendLayout();
             SuspendLayout();
             // 
             // webView2
             // 
             webView2.AllowExternalDrop = true;
+            webView2.BackColor = SystemColors.Window;
             webView2.CreationProperties = null;
             webView2.DefaultBackgroundColor = Color.White;
             webView2.Location = new Point(0, 25);
@@ -56,28 +59,33 @@ namespace Moo.bot
             // 
             closeButton.AutoSize = true;
             closeButton.BackColor = Color.Transparent;
+            closeButton.Dock = DockStyle.Right;
             closeButton.FlatAppearance.BorderSize = 0;
             closeButton.FlatStyle = FlatStyle.Flat;
             closeButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             closeButton.ForeColor = SystemColors.WindowText;
-            closeButton.Location = new Point(441, 0);
+            closeButton.Location = new Point(438, 0);
             closeButton.Margin = new Padding(0);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(25, 25);
+            closeButton.Size = new Size(29, 25);
             closeButton.TabIndex = 1;
             closeButton.Text = "X";
             closeButton.UseVisualStyleBackColor = false;
             closeButton.Click += Moobot_Close;
+            closeButton.MouseDown += Moobot_MouseDown;
+            closeButton.MouseMove += Moobot_MouseMove;
+            closeButton.MouseUp += Moobot_MouseUp;
             // 
             // minimizeButton
             // 
             minimizeButton.AutoSize = true;
             minimizeButton.BackColor = Color.Transparent;
+            minimizeButton.Dock = DockStyle.Right;
             minimizeButton.FlatAppearance.BorderSize = 0;
             minimizeButton.FlatStyle = FlatStyle.Flat;
             minimizeButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             minimizeButton.ForeColor = SystemColors.ActiveCaptionText;
-            minimizeButton.Location = new Point(415, 0);
+            minimizeButton.Location = new Point(413, 0);
             minimizeButton.Margin = new Padding(0);
             minimizeButton.Name = "minimizeButton";
             minimizeButton.Size = new Size(25, 25);
@@ -85,11 +93,17 @@ namespace Moo.bot
             minimizeButton.Text = "-";
             minimizeButton.UseVisualStyleBackColor = false;
             minimizeButton.Click += Moobot_Minimize;
+            minimizeButton.MouseDown += Moobot_MouseDown;
+            minimizeButton.MouseMove += Moobot_MouseMove;
+            minimizeButton.MouseUp += Moobot_MouseUp;
             // 
             // titleBar
             // 
             titleBar.AccessibleRole = AccessibleRole.TitleBar;
             titleBar.BackColor = Color.Transparent;
+            titleBar.Controls.Add(minimizeButton);
+            titleBar.Controls.Add(closeButton);
+            titleBar.Controls.Add(appTitle);
             titleBar.Dock = DockStyle.Top;
             titleBar.Location = new Point(0, 0);
             titleBar.Margin = new Padding(0);
@@ -100,12 +114,25 @@ namespace Moo.bot
             titleBar.MouseMove += Moobot_MouseMove;
             titleBar.MouseUp += Moobot_MouseUp;
             // 
+            // appTitle
+            // 
+            appTitle.AccessibleRole = AccessibleRole.TitleBar;
+            appTitle.AutoSize = true;
+            appTitle.Location = new Point(3, 5);
+            appTitle.Margin = new Padding(0);
+            appTitle.Name = "appTitle";
+            appTitle.Size = new Size(53, 15);
+            appTitle.TabIndex = 0;
+            appTitle.Text = "Moo.bot";
+            appTitle.TextAlign = ContentAlignment.MiddleLeft;
+            appTitle.MouseDown += Moobot_MouseDown;
+            appTitle.MouseMove += Moobot_MouseMove;
+            appTitle.MouseUp += Moobot_MouseUp;
+            // 
             // Moobot
             // 
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(467, 550);
-            Controls.Add(minimizeButton);
-            Controls.Add(closeButton);
             Controls.Add(titleBar);
             Controls.Add(webView2);
             FormBorderStyle = FormBorderStyle.None;
@@ -116,8 +143,9 @@ namespace Moo.bot
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Moo.bot";
             ((System.ComponentModel.ISupportInitialize)webView2).EndInit();
+            titleBar.ResumeLayout(false);
+            titleBar.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -126,5 +154,6 @@ namespace Moo.bot
         private Button closeButton;
         private Button minimizeButton;
         private Panel titleBar;
+        private Label appTitle;
     }
 }
