@@ -58,8 +58,10 @@ namespace Moo.bot
             closeButton.BackColor = Color.Transparent;
             closeButton.FlatAppearance.BorderSize = 0;
             closeButton.FlatStyle = FlatStyle.Flat;
+            closeButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             closeButton.ForeColor = SystemColors.WindowText;
             closeButton.Location = new Point(441, 0);
+            closeButton.Margin = new Padding(0);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(25, 25);
             closeButton.TabIndex = 1;
@@ -73,6 +75,7 @@ namespace Moo.bot
             minimizeButton.BackColor = Color.Transparent;
             minimizeButton.FlatAppearance.BorderSize = 0;
             minimizeButton.FlatStyle = FlatStyle.Flat;
+            minimizeButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             minimizeButton.ForeColor = SystemColors.ActiveCaptionText;
             minimizeButton.Location = new Point(415, 0);
             minimizeButton.Margin = new Padding(0);
